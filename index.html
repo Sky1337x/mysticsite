@@ -3,35 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
-    <link rel="icon" type="image/x-icon" href="/images/Logo_v1.png">
-    <title>MysticsristiYT</title>
+    <link rel="icon" type="image/png" href="images/Logo_v1.png">
+    <title>MysticsristiYT - Home</title>
 </head>
 <body>
-    <div class="maintitle">
-        <h1>Thanks for following my YouTube channel</h1>
-        <img src="images/Logo_v1.png" alt="Channel Logo" class="logo">
-        <h1 class="channel-name">Mysticsristi</h1>
-        <h1>You can buy me a coffee by</h1>
-        <a href="upi://pay?pa=mysticsristi@upi&pn=SRISTI%20%20KUMARI&cu=INR&mode=02&purpose=00&orgid=189999&sign=vrGP9zQeOhrZXniYXI2MO0eKGc2EPH9pTUYxpowhL1Ebc5Fpg4lr/+aVWJsQ+D7TLg9oHePv3Z88Kqd3Cq5kpttOBOfJmKQkIJXuPu3tesO5HebsTBQa+hTB4FHUlqP/aB2xZOg5zTSkBnT9eQGOVvBCtMDxQv4M5CEE+5RFKU4=" class="custom-button">
-            <img src="images/upi.jpeg" alt="UPI Button Icon">
-            UPI
-        </a>
-        <h1>Or using QR</h1>
-        <img src="images/tree.jpg" alt="QR Code" class="qr-code">
-        <div class="social-links">
-            <h2>Become a YouTube member</h2>
-            <a href="https://www.youtube.com/channel/UCBTafI6VGfch543DRjGeC0w/join" target="_blank" class="social-button">
-                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" width="32">
-                Join YouTube membership
-            </a>
-            <h2>Follow me on social media</h2>
-            <a href="https://www.instagram.com/mysticsristi" target="_blank" class="social-button">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="32">
-                Instagram
-            </a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/Logo_v1.png" alt="Logo">
+                <span>Mysticsristi</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-    </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <img src="images/Logo_v1.png" alt="Channel Logo" class="hero-logo">
+            <h1 class="hero-title">Welcome to <span class="channel-name">Mysticsristi</span></h1>
+            <p class="hero-subtitle">Thanks for following my YouTube channel! ✨</p>
+            <div class="hero-buttons">
+                <a href="https://www.youtube.com/channel/UCBTafI6VGfch543DRjGeC0w" target="_blank" class="btn btn-primary">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    Visit Channel
+                </a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support-section">
+        <div class="container">
+            <h2 class="section-title">Support My Channel</h2>
+            <p class="section-subtitle">Your support helps me create better content!</p>
+            
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="card-icon">☕</div>
+                    <h3>Buy Me a Coffee</h3>
+                    <p>Support via UPI payment</p>
+                    <a href="upi://pay?pa=mysticsristi@upi&pn=SRISTI%20%20KUMARI&cu=INR&mode=02&purpose=00&orgid=189999&sign=vrGP9zQeOhrZXniYXI2MO0eKGc2EPH9pTUYxpowhL1Ebc5Fpg4lr/+aVWJsQ+D7TLg9oHePv3Z88Kqd3Cq5kpttOBOfJmKQkIJXuPu3tesO5HebsTBQa+hTB4FHUlqP/aB2xZOg5zTSkBnT9eQGOVvBCtMDxQv4M5CEE+5RFKU4=" class="card-button">
+                        <img src="images/upi.jpeg" alt="UPI">
+                        Pay with UPI
+                    </a>
+                </div>
+
+                <div class="support-card">
+                    <div class="card-icon">📱</div>
+                    <h3>Scan QR Code</h3>
+                    <p>Quick payment option</p>
+                    <img src="images/tree.jpg" alt="QR Code" class="qr-code">
+                </div>
+
+                <div class="support-card">
+                    <div class="card-icon">🌟</div>
+                    <h3>YouTube Member</h3>
+                    <p>Get exclusive perks & badges</p>
+                    <a href="https://www.youtube.com/channel/UCBTafI6VGfch543DRjGeC0w/join" target="_blank" class="card-button">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+                        Join Membership
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Section -->
+    <section class="social-section">
+        <div class="container">
+            <h2 class="section-title">Connect With Me</h2>
+            <div class="social-grid">
+                <a href="https://www.instagram.com/mysticsristi" target="_blank" class="social-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.youtube.com/channel/UCBTafI6VGfch543DRjGeC0w" target="_blank" class="social-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+                    <span>YouTube</span>
+                </a>
+                <a href="#contact" class="social-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
+                    <span>Email</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="container" id="about" style="padding: 4rem 2rem 2rem;">
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <h2 class="section-title">About Mysticsristi</h2>
+            <p class="section-subtitle" style="margin-bottom: 2rem;">
+                Gaming content focused on lets plays, live streams, and fun community moments.
+            </p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="subscriberCount">10K+</div>
+                <div class="stat-label">Subscribers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="videoCount">100+</div>
+                <div class="stat-label">Videos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="viewCount">1M+</div>
+                <div class="stat-label">Total Views</div>
+            </div>
+        </div>
+
+        <div style="max-width: 800px; margin: 2rem auto 0; background: var(--card-bg); padding: 2.5rem; border-radius: 20px; box-shadow: var(--shadow-md);">
+            <h3 style="text-align: center; margin-bottom: 1.2rem;">My Journey</h3>
+            <p style="margin-bottom: 1rem; line-height: 1.8;">
+                Hey there! I'm Sristi Kumari, the creator behind Mysticsristi. What started as a simple love for
+                gaming has grown into an amazing community of players who enjoy fun, immersive, and exciting gameplay.
+            </p>
+            <p style="margin-bottom: 1rem; line-height: 1.8;">
+                On this channel, I share lets plays, live streams, and gameplay highlights across different games.
+                I focus on real reactions, entertaining moments, and consistent uploads so you always have something
+                fun to watch.
+            </p>
+            <p style="line-height: 1.8;">
+                Thank you for being part of this journey. Your support, comments, and shares mean everything,
+                and they motivate me to keep leveling up the content with every new stream and video.
+            </p>
+        </div>
+
+        <h3 class="section-title" style="font-size: 2rem; margin-top: 3rem;">What I Create</h3>
+        <div class="support-grid" style="margin-top: 1.5rem;">
+            <div class="support-card">
+                <div class="card-icon">🎥</div>
+                <h3>Lets Plays</h3>
+                <p>Full gameplay sessions, story progress, and raw in-game moments</p>
+            </div>
+            <div class="support-card">
+                <div class="card-icon">🔴</div>
+                <h3>Live Streams</h3>
+                <p>Live gaming sessions where we play together and chat in real time</p>
+            </div>
+            <div class="support-card">
+                <div class="card-icon">🔥</div>
+                <h3>Highlights &amp; Shorts</h3>
+                <p>Best plays, funny clips, and quick gaming moments from streams</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section class="container" id="videos" style="padding: 4rem 2rem 2rem;">
+        <h2 class="section-title">Latest Videos</h2>
+        <p id="videosStatus" class="section-subtitle" style="margin-bottom: 1rem;">Loading latest videos...</p>
+        <div class="videos-grid" id="videosGrid"></div>
+
+        <div style="max-width: 800px; margin: 2rem auto 0; background: var(--card-bg); padding: 2rem; border-radius: 20px; box-shadow: var(--shadow-md);">
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px;">
+                <iframe
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                    src="https://www.youtube.com/embed/videoseries?list=UUBTafI6VGfch543DRjGeC0w"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">Get In Touch</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">
+                Have a question, collaboration idea, or just want to say hi? I'd love to hear from you!
+            </p>
+
+            <iframe name="hiddenFormTarget" style="display:none;" title="Form Submit Target"></iframe>
+            <form id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLSc2jnedy442GF9AeaqOTEJ9E0gD0vfCdzElU19XSzbzrJF5LQ/formResponse" method="POST" target="hiddenFormTarget">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="entry.1843611031" required placeholder="Enter your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Your Email *</label>
+                    <input type="email" id="email" name="entry.920508221" required placeholder="your.email@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <input type="text" id="subject" name="entry.329342319" required placeholder="What's this about?">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message *</label>
+                    <textarea id="message" name="entry.1173600860" required placeholder="Tell me what's on your mind..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Mysticsristi. All rights reserved.</p>
+            <p>Made with ❤️ for my amazing subscribers</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
