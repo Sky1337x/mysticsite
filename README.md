@@ -45,24 +45,33 @@ A modern, responsive multi-page website for your YouTube channel with animations
 - Customize "What I Create" cards - lines 85-102
 
 **Videos Page (videos.html)**
-- Videos are now fetched automatically from your YouTube channel
-- Add your YouTube Data API key in script.js (YOUTUBE_API_KEY)
+- Videos are fetched automatically from your YouTube channel
+- API calls now run through secure serverless endpoints in /api
 - Update channel id in script.js if you change channels (YOUTUBE_CHANNEL_ID)
 
-### 1.1 Enable Automatic Video Loading
+### 1.1 Enable Automatic Video Loading (Secure)
 
 1. Open Google Cloud Console and create/select a project.
 2. Enable YouTube Data API v3 for that project.
 3. Create an API key.
-4. Open script.js and update:
+4. In Vercel, open your project settings and add an environment variable:
+
+- Name: YOUTUBE_API_KEY
+- Value: your YouTube Data API key
+
+5. Keep this key server-side only. Do not place it in script.js.
+
+6. script.js should contain:
 
 ```js
 const YOUTUBE_CHANNEL_ID = 'UCBTafI6VGfch543DRjGeC0w';
-const YOUTUBE_API_KEY = 'PASTE_YOUR_API_KEY_HERE';
 const YOUTUBE_MAX_RESULTS = 6;
 ```
 
-The videos page will then automatically display your latest uploads.
+The videos page will then automatically display your latest uploads through:
+
+- /api/youtube-channel-metrics
+- /api/youtube-latest-videos
 
 **Contact Page (contact.html)**
 - Update email address (mysticsristi@gmail.com)
@@ -112,6 +121,14 @@ Copy the structure of any existing page and:
 
 ### Other Hosting
 Upload all files to your web hosting service via FTP or control panel.
+
+### Vercel (Recommended for this project)
+1. Import this repository into Vercel.
+2. Add environment variable YOUTUBE_API_KEY in Project Settings > Environment Variables.
+3. Deploy.
+4. Restrict the Google API key in Google Cloud Console:
+   - Application restrictions: HTTP referrers (your Vercel domain)
+   - API restrictions: YouTube Data API v3 only
 
 ## 🎯 Tips for Best Results
 

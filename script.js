@@ -2,7 +2,6 @@
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 const YOUTUBE_CHANNEL_ID = 'UCBTafI6VGfch543DRjGeC0w';
-const YOUTUBE_API_KEY = 'AIzaSyCo3MIArEusUr1kU_NuTH7ChCke3drnkIM';
 const YOUTUBE_MAX_RESULTS = 6;
 
 if (navToggle && navMenu) {
@@ -82,10 +81,8 @@ function formatCompactNumber(value) {
 }
 
 async function fetchChannelMetrics() {
-    const endpoint = new URL('https://www.googleapis.com/youtube/v3/channels');
-    endpoint.searchParams.set('part', 'statistics');
-    endpoint.searchParams.set('id', YOUTUBE_CHANNEL_ID);
-    endpoint.searchParams.set('key', YOUTUBE_API_KEY);
+    const endpoint = new URL('/api/youtube-channel-metrics', window.location.origin);
+    endpoint.searchParams.set('channelId', YOUTUBE_CHANNEL_ID);
 
     const response = await fetch(endpoint.toString());
     if (!response.ok) {
@@ -94,15 +91,14 @@ async function fetchChannelMetrics() {
 
     const data = await response.json();
     if (data.error) {
-        throw new Error(data.error.message || 'YouTube metrics API error.');
+        throw new Error(data.error || 'YouTube metrics API error.');
     }
 
-    const item = Array.isArray(data.items) ? data.items[0] : null;
-    if (!item || !item.statistics) {
+    if (!data.statistics) {
         throw new Error('No channel statistics were returned.');
     }
 
-    return item.statistics;
+    return data.statistics;
 }
 
 async function initChannelMetrics() {
@@ -110,7 +106,7 @@ async function initChannelMetrics() {
     const videoCountEl = document.getElementById('videoCount');
     const viewCountEl = document.getElementById('viewCount');
 
-    if (!subscriberCountEl || !videoCountEl || !viewCountEl || !YOUTUBE_API_KEY) {
+    if (!subscriberCountEl || !videoCountEl || !viewCountEl) {
         return;
     }
 
@@ -175,16 +171,9 @@ function getUploadsPlaylistId(channelId) {
 }
 
 async function fetchLatestVideos() {
-    const playlistId = getUploadsPlaylistId(YOUTUBE_CHANNEL_ID);
-    if (!playlistId) {
-        throw new Error('Invalid YouTube channel id.');
-    }
-
-    const endpoint = new URL('https://www.googleapis.com/youtube/v3/playlistItems');
-    endpoint.searchParams.set('part', 'snippet,contentDetails');
-    endpoint.searchParams.set('playlistId', playlistId);
+    const endpoint = new URL('/api/youtube-latest-videos', window.location.origin);
+    endpoint.searchParams.set('channelId', YOUTUBE_CHANNEL_ID);
     endpoint.searchParams.set('maxResults', String(YOUTUBE_MAX_RESULTS));
-    endpoint.searchParams.set('key', YOUTUBE_API_KEY);
 
     const response = await fetch(endpoint.toString());
     if (!response.ok) {
@@ -193,32 +182,11 @@ async function fetchLatestVideos() {
 
     const data = await response.json();
     if (data.error) {
-        throw new Error(data.error.message || 'YouTube API error.');
+        throw new Error(data.error || 'YouTube API error.');
     }
 
-    const items = Array.isArray(data.items) ? data.items : [];
-    return items
-        .map((item) => {
-            const snippet = item.snippet || {};
-            const videoId = (item.contentDetails && item.contentDetails.videoId) || '';
-            const thumbnail = (snippet.thumbnails && (
-                (snippet.thumbnails.high && snippet.thumbnails.high.url) ||
-                (snippet.thumbnails.medium && snippet.thumbnails.medium.url) ||
-                (snippet.thumbnails.default && snippet.thumbnails.default.url)
-            )) || '';
-            const publishedAt = snippet.publishedAt ? new Date(snippet.publishedAt) : null;
-            const publishedDate = publishedAt && !Number.isNaN(publishedAt.valueOf())
-                ? publishedAt.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
-                : 'Recently uploaded';
-
-            return {
-                videoId,
-                thumbnail,
-                title: snippet.title || 'Untitled video',
-                meta: `Published ${publishedDate}`
-            };
-        })
-        .filter((video) => video.videoId && video.thumbnail);
+    const videos = Array.isArray(data.videos) ? data.videos : [];
+    return videos.filter((video) => video.videoId && video.thumbnail);
 }
 
 async function initAutoVideos() {
@@ -226,13 +194,6 @@ async function initAutoVideos() {
     const videosStatus = document.getElementById('videosStatus');
 
     if (!videosGrid) {
-        return;
-    }
-
-    if (!YOUTUBE_API_KEY) {
-        if (videosStatus) {
-            videosStatus.textContent = 'Add your YouTube Data API key in script.js to auto-load videos.';
-        }
         return;
     }
 
